@@ -1,11 +1,21 @@
 package main
 
+import (
+	"gingonic-api/httpd/handler"
+	newsfeed "gingonic-api/platform/newsFeed"
+
+	"github.com/gin-gonic/gin"
+)
+
 func main() {
-	/*
-		server := gin.Default()
+	feed := newsfeed.New()
 
-		server.GET("/ping", handler.PingGet())
+	server := gin.Default()
 
-		server.Run()
-	*/
+	server.GET("/ping", handler.PingGet())
+	server.GET("/newsfeed", handler.NewsFeedGet(feed))
+	server.POST("/newsfeed", handler.NewsFeedPost(feed))
+
+	server.Run()
+
 }
